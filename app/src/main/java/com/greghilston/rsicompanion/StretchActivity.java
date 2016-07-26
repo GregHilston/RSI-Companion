@@ -3,6 +3,7 @@ package com.greghilston.rsicompanion;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 import java.util.Vector;
 
@@ -22,6 +23,7 @@ public class StretchActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -46,6 +48,10 @@ public class StretchActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Increments the current exercise by one, wrapping back if needed
+     * @param view  passed by nextExercise button
+     */
     public void nextExercise(View view) {
         this.currentStretchIndex++;
 
@@ -58,6 +64,10 @@ public class StretchActivity extends AppCompatActivity {
         graphicallyUpdateCurrentStretch(this.currentStretchIndex);
     }
 
+    /**
+     * Increments the current exercise by one, wrapping forward if needed
+     * @param view  passed by previousExercise button
+     */
     public void previousExercise(View view) {
         this.currentStretchIndex--;
 
