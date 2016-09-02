@@ -1,32 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
-    <TextView android:id="@+id/stretch_name_textview"
+    <TextView
+        android:id="@+id/stretchNameTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""/>
 
-    <Button android:id="@+id/previous_exercise_textview"
+    <Button
+        android:id="@+id/previousExerciseTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Previous Exercise"
-        android:layout_below="@id/stretch_name_textview"
         android:layout_alignParentLeft="true"
-        android:onClick="previousExercise"/>
+        android:layout_below="@id/stretchNameTextview"
+        android:onClick="previousExercise"
+        android:text="Previous Exercise" />
 
-    <Button android:id="@+id/next_exercise_textview"
+    <Button
+        android:id="@+id/nextExerciseTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next Exercise"
-        android:layout_below="@id/stretch_name_textview"
-        android:layout_alignRight="@id/previous_exercise_textview"
         android:layout_alignParentRight="true"
-        android:onClick="nextExercise"/>
+        android:layout_alignRight="@id/previousExerciseTextview"
+        android:layout_below="@id/stretchNameTextview"
+        android:onClick="nextExercise"
+        android:text="Next Exercise" />
+
+    <pl.droidsonroids.gif.GifTextView
+        android:id="@+id/currentExerciseGif"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/nextExerciseTextview"
+        android:background="@drawable/cat" />
 </RelativeLayout>
