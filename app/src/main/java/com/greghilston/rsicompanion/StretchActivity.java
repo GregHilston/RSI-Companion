@@ -19,8 +19,8 @@ public class StretchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         stretches = new Vector<>();
-        stretches.add(new Stretch("Cat", R.drawable.cat, 10));
-        stretches.add(new Stretch("Dog", R.drawable.dog, 10));
+        stretches.add(new Stretch("Cat", R.drawable.cat, 1));
+        stretches.add(new Stretch("Dog", R.drawable.dog, 2));
 
         graphicallyUpdateCurrentStretch(currentStretchIndex);
     }
@@ -34,8 +34,12 @@ public class StretchActivity extends AppCompatActivity {
         Stretch currentStretch = this.stretches.get(currentStretchIndex);
 
         // Update the exercise name
-        TextView textView = (TextView) findViewById(R.id.stretchNameTextview);
-        textView.setText(currentStretch.name);
+        TextView exerciseNameTextView = (TextView) findViewById(R.id.stretchNameTextview);
+        exerciseNameTextView.setText(currentStretch.name);
+
+        // Update the timer
+        TextView timerTextView = (TextView) findViewById(R.id.timerTextView);
+        timerTextView.setText(String.valueOf(currentStretch.duration));
 
         // Update the exercise gif
         pl.droidsonroids.gif.GifTextView gifTextView = (pl.droidsonroids.gif.GifTextView) findViewById(R.id.currentExerciseGif);
