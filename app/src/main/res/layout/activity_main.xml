@@ -25,7 +25,7 @@
             android:id="@+id/previousExerciseTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="previousExercise"
+            android:onClick="clickPreviousExercise"
             android:text="Previous" />
 
         <TextView
@@ -37,9 +37,8 @@
             android:id="@+id/nextExerciseTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="nextExercise"
+            android:onClick="clickNextExercise"
             android:text="Next" />
-
     </LinearLayout>
 
     <!-- Second Row -->
@@ -51,10 +50,40 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/addTimeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="clickIncrementTimer"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/pausePlayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="clickToggleStartStopTimer"
+            android:text="Play" />
+
+        <Button
+            android:id="@+id/restartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="clickRestartTimer"
+            android:text="Restart" />
+    </LinearLayout>
+
+    <!-- Third Row -->
+    <LinearLayout
+        android:id="@+id/thirdRow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <pl.droidsonroids.gif.GifTextView
             android:id="@+id/currentExerciseGif"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </LinearLayout>
 </LinearLayout>
