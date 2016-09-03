@@ -2,11 +2,13 @@ package com.greghilston.rsicompanion;
 
 import java.util.Vector;
 
+/**
+ *
+ */
 public class ExerciseModel {
     private Vector<Exercise> exercises;
     private int currentStretchIndex = 0;
     private int timeLeftSeconds = 0;
-    private int incrementAmountSeconds = 10;
 
     public ExerciseModel() {
         exercises = new Vector<>();
@@ -15,6 +17,11 @@ public class ExerciseModel {
         currentStretchIndex = 0;
     }
 
+    /**
+     * Gets current exercise
+     *
+     * @return current exercise
+     */
     public Exercise getCurrentExercise() {
         return this.exercises.get(currentStretchIndex);
     }
@@ -45,20 +52,26 @@ public class ExerciseModel {
         return getCurrentExercise();
     }
 
-    public void startTimer() {
+    /**
+     * Toggles the current start or stop state of the timer
+     */
+    public void toggleStartStopTimer() {
 
     }
 
-    public void stopTimer() {
-
-    }
-
+    /**
+     * Increment timer by defined amount
+     */
     public void incrementTimer() {
-        this.timeLeftSeconds += this.incrementAmountSeconds;
+        int incrementAmountSeconds = 10;
+
+        this.timeLeftSeconds += incrementAmountSeconds;
     }
 
+    /**
+     * Restarts timer to defined exercise's default amount
+     */
     public void restartTimer() {
         this.timeLeftSeconds = getCurrentExercise().duration;
     }
-
 }

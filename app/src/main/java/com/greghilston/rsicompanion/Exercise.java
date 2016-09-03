@@ -1,5 +1,8 @@
 package com.greghilston.rsicompanion;
 
+/**
+ *
+ */
 public class Exercise {
     public String name;
     public int drawableId;
