@@ -1,10 +1,13 @@
 package com.greghilston.rsicompanion;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Acts as the presentation layer. Received calls from our view, forwards them to our model and makes
  * the call backs to the view.
  */
 public class ExercisePresenter {
+    final static long secondsInAMinute = 60;
     private ExerciseView exerciseView;
     private ExerciseModel exerciseModel;
 
@@ -18,6 +21,7 @@ public class ExercisePresenter {
         this.exerciseModel = new ExerciseModel(this);
 
         this.exerciseView.updateStretch(this.exerciseModel.getCurrentExercise());
+        this.setTimerText(exerciseModel.getCurrentExercise().getDurationMilliseconds());
     }
 
     /**
@@ -25,6 +29,7 @@ public class ExercisePresenter {
      */
     public void nextExercise() {
         exerciseView.updateStretch(exerciseModel.nextExercise());
+        this.setTimerText(exerciseModel.getCurrentExercise().getDurationMilliseconds());
     }
 
     /**
@@ -32,6 +37,7 @@ public class ExercisePresenter {
      */
     public void previousExercise() {
         exerciseView.updateStretch(exerciseModel.previousExercise());
+
     }
 
     /**
@@ -41,8 +47,14 @@ public class ExercisePresenter {
         exerciseModel.toggleStartStopTimer();
     }
 
-    public void setTimer(int timeSeconds) {
-        this.exerciseView.setTimer(timeSeconds);
+    public void setTimerText(long timeMilliseconds) {
+        String timeFormattedString;
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(timeMilliseconds);
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(timeMilliseconds) % secondsInAMinute;
+
+        timeFormattedString = minutes + ":" + seconds;
+
+        this.exerciseView.setTimerText(timeFormattedString);
     }
 
     /**

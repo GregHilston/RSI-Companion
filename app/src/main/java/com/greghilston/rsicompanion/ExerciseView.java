@@ -4,9 +4,9 @@ public interface ExerciseView {
     /**
      * Sets the timer display
      *
-     * @param timeSeconds seconds to set the timer to
+     * @param stringFormattedTime formatted string representing time left on timer
      */
-    void setTimer(int timeSeconds);
+    void setTimerText(String stringFormattedTime);
 
     /**
      * Updates the graphically display based on a stretch

@@ -36,7 +36,7 @@
 
     </LinearLayout>
 
-    <!-- Second Row (Timer Controls) -->
+    <!-- Second Row (ExerciseTimer Controls) -->
     <LinearLayout
         android:id="@+id/secondRow"
         android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
             android:text="Restart" />
     </LinearLayout>
 
-    <!-- Third Row (Timer) -->
+    <!-- Third Row (ExerciseTimer) -->
     <LinearLayout
         android:id="@+id/thirdRow"
         android:layout_width="wrap_content"

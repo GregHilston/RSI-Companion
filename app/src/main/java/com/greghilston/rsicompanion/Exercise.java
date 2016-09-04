@@ -6,12 +6,12 @@ package com.greghilston.rsicompanion;
 public class Exercise {
     private String name;
     private int drawableId;
-    private int durationSeconds;
+    private long durationMilliseconds;
 
-    public Exercise(String name, int drawableId, int durationSeconds) {
+    public Exercise(String name, int drawableId, int durationMilliseconds) {
         this.name = name;
         this.drawableId = drawableId;
-        this.durationSeconds = durationSeconds;
+        this.durationMilliseconds = durationMilliseconds;
     }
 
     /**
@@ -37,7 +37,7 @@ public class Exercise {
      *
      * @return duration in seconds
      */
-    public int getDurationSeconds() {
-        return durationSeconds;
+    public long getDurationMilliseconds() {
+        return durationMilliseconds;
     }
 }

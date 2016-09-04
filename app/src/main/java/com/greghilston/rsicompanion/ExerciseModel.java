@@ -5,23 +5,26 @@ import android.os.CountDownTimer;
 import java.util.Vector;
 
 /**
- * Acts as the Model layer. Generally has the "buisness logic" and the state of our application
+ * Acts as the Model layer. Generally has the "business logic" and the state of our application
  */
 public class ExerciseModel {
+    private static final long oneSecondInMilliseconds = 1000;
+    private static final long fiveSecondsInMilliseconds = 5000;
+    private static final long tenSecondsInMilliseconds = 10000;
     private ExercisePresenter exercisePresenter;
     private Vector<Exercise> exercises;
     private int currentStretchIndex = 0;
-    private int timeLeftSeconds = 0;
     private boolean timerIsStarted = false;
+    private long timeRemainingMilliseconds = 0;
     private CountDownTimer countDownTimer;
 
     public ExerciseModel(ExercisePresenter exercisePresenter) {
         this.exercisePresenter = exercisePresenter;
         exercises = new Vector<>();
-        exercises.add(new Exercise("Cat", R.drawable.cat, 10));
-        exercises.add(new Exercise("Dog", R.drawable.dog, 20));
+        exercises.add(new Exercise("Cat", R.drawable.cat, 10000));
+        exercises.add(new Exercise("Dog", R.drawable.dog, 20000));
         currentStretchIndex = 0;
-        timeLeftSeconds = getCurrentExercise().getDurationSeconds();
+        timeRemainingMilliseconds = this.getCurrentExercise().getDurationMilliseconds();
     }
 
     /**
@@ -33,27 +36,6 @@ public class ExerciseModel {
         return this.exercises.get(currentStretchIndex);
     }
 
-    public int getTimeLeftSeconds() {
-        return timeLeftSeconds;
-    }
-
-    private void setupNewTimer() {
-        countDownTimer = new CountDownTimer(getTimeLeftSeconds() * 1000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                System.out.println("millisUntilFinished " + millisUntilFinished);
-                System.out.println("timeLeftSeconds " + getTimeLeftSeconds());
-                timeLeftSeconds -= 1; // Reduce the time left by a second
-                System.out.println("\ttimeLeftSeconds " + getTimeLeftSeconds());
-
-                ExerciseModel.this.exercisePresenter.setTimer(getTimeLeftSeconds());
-            }
-
-            public void onFinish() {
-                timeLeftSeconds = 0;
-                ExerciseModel.this.exercisePresenter.setTimer(getTimeLeftSeconds());
-            }
-        }.start();
-    }
 
     /**
      * Increments the current exercise by one, wrapping back if needed
@@ -65,8 +47,7 @@ public class ExerciseModel {
             this.currentStretchIndex = 0;
         }
 
-        this.timeLeftSeconds = getCurrentExercise().getDurationSeconds();
-        setupNewTimer();
+        this.cancelTimer();
         return getCurrentExercise();
     }
 
@@ -80,37 +61,72 @@ public class ExerciseModel {
             this.currentStretchIndex = this.exercises.size() - 1;
         }
 
-        this.timeLeftSeconds = getCurrentExercise().getDurationSeconds();
-        setupNewTimer();
+        this.cancelTimer();
         return getCurrentExercise();
     }
 
     /**
-     * Toggles the timer start or stop status
+     * Creates a new CountDownTimer and starts it
+     */
+    private void createAndStartTimer() {
+        countDownTimer = new CountDownTimer(getTimeRemainingMilliseconds(), ExerciseModel.oneSecondInMilliseconds) {
+            public void onTick(long millisUntilFinished) {
+                ExerciseModel.this.timeRemainingMilliseconds = millisUntilFinished;
+                ExerciseModel.this.exercisePresenter.setTimerText(ExerciseModel.this.timeRemainingMilliseconds);
+            }
+
+            public void onFinish() {
+                ExerciseModel.this.timeRemainingMilliseconds = 0;
+                ExerciseModel.this.exercisePresenter.setTimerText(timeRemainingMilliseconds);
+            }
+        }.start();
+
+        this.timerIsStarted = true;
+    }
+
+    /**
+     * Increment exercise timer by defined amount
+     */
+    public void incrementTimer() {
+        this.timeRemainingMilliseconds += ExerciseModel.fiveSecondsInMilliseconds;
+
+        if (this.timerIsStarted) {
+            this.cancelTimer();
+            createAndStartTimer();
+        }
+
+        this.exercisePresenter.setTimerText(this.timeRemainingMilliseconds);
+    }
+
+    /**
+     * Restarts exercise timer to defined exercise's default amount
+     */
+    public void restartTimer() {
+        this.timeRemainingMilliseconds = this.getCurrentExercise().getDurationMilliseconds();
+        this.cancelTimer();
+        this.exercisePresenter.setTimerText(this.timeRemainingMilliseconds);
+    }
+
+    private void cancelTimer() {
+        this.countDownTimer.cancel();
+        this.timerIsStarted = false;
+        this.timeRemainingMilliseconds = this.getCurrentExercise().getDurationMilliseconds();
+    }
+
+    /**
+     * Toggles the exercise timer start or stop status
      */
     public void toggleStartStopTimer() {
         if (this.timerIsStarted) {
-            this.countDownTimer.cancel();
+            cancelTimer();
         } else {
-            setupNewTimer();
+            createAndStartTimer();
             this.countDownTimer.start();
             this.timerIsStarted = true;
         }
     }
 
-    /**
-     * Increment timer by defined amount
-     */
-    public void incrementTimer() {
-        this.timeLeftSeconds += 10;
-        this.exercisePresenter.setTimer(this.timeLeftSeconds);
-    }
-
-    /**
-     * Restarts timer to defined exercise's default amount
-     */
-    public void restartTimer() {
-        this.timeLeftSeconds = getCurrentExercise().getDurationSeconds();
-        this.exercisePresenter.setTimer(this.timeLeftSeconds);
+    public long getTimeRemainingMilliseconds() {
+        return timeRemainingMilliseconds;
     }
 }
