@@ -85,9 +85,9 @@ public class MainActivity extends AppCompatActivity implements ExerciseView {
     }
 
     @Override
-    public void updatePausePlayButton(String s) {
+    public void updatePausePlayButtonText(String newText) {
         // Update the pause play button
         Button pausePlayButton = (Button) findViewById(R.id.pausePlayButton);
-        pausePlayButton.setText(s);
+        pausePlayButton.setText(newText);
     }
 }

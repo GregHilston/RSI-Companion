@@ -88,11 +88,13 @@ public class ExerciseModel {
      * Increment exercise timer by defined amount
      */
     public void incrementTimer() {
-        this.timeRemainingMilliseconds += ExerciseModel.fiveSecondsInMilliseconds;
-
         if (this.timerIsStarted) {
+            long currentTimeRemaining = this.timeRemainingMilliseconds; // Used as a temp, as others edit this.timeRemainingMilliseconds
             this.cancelTimer();
+            this.timeRemainingMilliseconds = currentTimeRemaining + ExerciseModel.fiveSecondsInMilliseconds;
             createAndStartTimer();
+        } else {
+            this.timeRemainingMilliseconds += ExerciseModel.fiveSecondsInMilliseconds;
         }
 
         this.exercisePresenter.setTimerText(this.timeRemainingMilliseconds);
@@ -119,10 +121,12 @@ public class ExerciseModel {
     public void toggleStartStopTimer() {
         if (this.timerIsStarted) {
             cancelTimer();
+            this.exercisePresenter.updatePausePlayButton("Play");
         } else {
             createAndStartTimer();
             this.countDownTimer.start();
             this.timerIsStarted = true;
+            this.exercisePresenter.updatePausePlayButton("Pause");
         }
     }
 

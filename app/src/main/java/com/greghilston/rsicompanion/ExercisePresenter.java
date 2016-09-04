@@ -57,6 +57,10 @@ public class ExercisePresenter {
         this.exerciseView.setTimerText(timeFormattedString);
     }
 
+    public void updatePausePlayButton(String newText) {
+        this.exerciseView.updatePausePlayButtonText(newText);
+    }
+
     /**
      * Commands ExerciseModel to increment timer by defined amount
      */

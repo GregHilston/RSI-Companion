@@ -18,7 +18,7 @@ public interface ExerciseView {
     /**
      * Updates the pause play button text
      *
-     * @param s string to set button text to
+     * @param newText string to set button text to
      */
-    void updatePausePlayButton(String s);
+    void updatePausePlayButtonText(String newText);
 }
