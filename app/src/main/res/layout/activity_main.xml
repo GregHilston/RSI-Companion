@@ -38,7 +38,7 @@
 
     <!-- Second Row (Timer Controls) -->
     <LinearLayout
-        android:id="@+id/SecondRow"
+        android:id="@+id/secondRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -66,9 +66,25 @@
             android:text="Restart" />
     </LinearLayout>
 
-    <!-- Third Row (Exercise Gif) -->
+    <!-- Third Row (Timer) -->
     <LinearLayout
         android:id="@+id/thirdRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/timerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+    </LinearLayout>
+
+    <!-- Fouth Row (Exercise Gif) -->
+    <LinearLayout
+        android:id="@+id/fouthRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

@@ -15,7 +15,7 @@ public class ExercisePresenter {
      */
     public ExercisePresenter(ExerciseView v) {
         this.exerciseView = v;
-        this.exerciseModel = new ExerciseModel();
+        this.exerciseModel = new ExerciseModel(this);
 
         this.exerciseView.updateStretch(this.exerciseModel.getCurrentExercise());
     }
@@ -38,7 +38,11 @@ public class ExercisePresenter {
      * Commands ExerciseModel to timer start or stop status
      */
     public void toggleStartStopTimer() {
+        exerciseModel.toggleStartStopTimer();
+    }
 
+    public void setTimer(int timeSeconds) {
+        this.exerciseView.setTimer(timeSeconds);
     }
 
     /**

@@ -6,7 +6,7 @@ public interface ExerciseView {
      *
      * @param timeSeconds seconds to set the timer to
      */
-    void changeTimer(int timeSeconds);
+    void setTimer(int timeSeconds);
 
     /**
      * Updates the graphically display based on a stretch

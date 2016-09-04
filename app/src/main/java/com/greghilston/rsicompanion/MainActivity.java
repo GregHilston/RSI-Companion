@@ -66,10 +66,10 @@ public class MainActivity extends AppCompatActivity implements ExerciseView {
     }
 
     @Override
-    public void changeTimer(int timeSeconds) {
-        // Update the timer
-        // TextView timerTextView = (TextView) findViewById(R.id.timerTextView);
-        // timerTextView.setText(String.valueOf(timeSeconds));
+    public void setTimer(int timeSeconds) {
+        // Update the timer TextView
+        TextView timerTextView = (TextView) findViewById(R.id.timerTextView);
+        timerTextView.setText(String.valueOf(timeSeconds));
     }
 
     @Override
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements ExerciseView {
         exerciseNameTextView.setText(s.getName());
 
         // Update the timer
-        changeTimer(s.getDurationSeconds());
+        setTimer(s.getDurationSeconds());
 
         // Update the exercise gif
         pl.droidsonroids.gif.GifTextView gifTextView = (pl.droidsonroids.gif.GifTextView) findViewById(R.id.currentExerciseGif);
