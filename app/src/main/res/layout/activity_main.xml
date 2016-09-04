@@ -3,23 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <!-- First Row -->
+    <!-- Going To Be In Header -->
+    <TextView
+        android:id="@+id/stretchNameTextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <!-- First Row (Exercise Controls) -->
     <LinearLayout
         android:id="@+id/firstRow"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <!-- Going To Be In Header -->
-        <TextView
-            android:id="@+id/stretchNameTextview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
 
         <Button
             android:id="@+id/previousExerciseTextview"
@@ -28,26 +27,21 @@
             android:onClick="clickPreviousExercise"
             android:text="Previous" />
 
-        <TextView
-            android:id="@+id/timerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
         <Button
             android:id="@+id/nextExerciseTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="clickNextExercise"
             android:text="Next" />
+
     </LinearLayout>
 
-    <!-- Second Row -->
+    <!-- Second Row (Timer Controls) -->
     <LinearLayout
-        android:id="@+id/secondRow"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/SecondRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <Button
@@ -72,18 +66,17 @@
             android:text="Restart" />
     </LinearLayout>
 
-    <!-- Third Row -->
+    <!-- Third Row (Exercise Gif) -->
     <LinearLayout
         android:id="@+id/thirdRow"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <pl.droidsonroids.gif.GifTextView
             android:id="@+id/currentExerciseGif"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>
