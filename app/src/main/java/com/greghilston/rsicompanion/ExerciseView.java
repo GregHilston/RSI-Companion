@@ -14,4 +14,11 @@ public interface ExerciseView {
      * @param s stretch to base the update on
      */
     void updateStretch(Exercise s);
+
+    /**
+     * Updates the pause play button text
+     *
+     * @param s string to set button text to
+     */
+    void updatePausePlayButton(String s);
 }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -67,22 +68,29 @@ public class MainActivity extends AppCompatActivity implements ExerciseView {
     @Override
     public void changeTimer(int timeSeconds) {
         // Update the timer
-        TextView timerTextView = (TextView) findViewById(R.id.timerTextView);
-        timerTextView.setText(String.valueOf(timeSeconds));
+        // TextView timerTextView = (TextView) findViewById(R.id.timerTextView);
+        // timerTextView.setText(String.valueOf(timeSeconds));
     }
 
     @Override
     public void updateStretch(Exercise s) {
         // Update the exercise name
         TextView exerciseNameTextView = (TextView) findViewById(R.id.stretchNameTextview);
-        exerciseNameTextView.setText(s.name);
+        exerciseNameTextView.setText(s.getName());
 
         // Update the timer
-        changeTimer(s.duration);
+        changeTimer(s.getDurationSeconds());
 
         // Update the exercise gif
         pl.droidsonroids.gif.GifTextView gifTextView = (pl.droidsonroids.gif.GifTextView) findViewById(R.id.currentExerciseGif);
-        gifTextView.setBackgroundResource(s.drawableId);
+        gifTextView.setBackgroundResource(s.getDrawableId());
         gifTextView.setFreezesAnimation(false);
+    }
+
+    @Override
+    public void updatePausePlayButton(String s) {
+        // Update the pause play button
+        Button pausePlayButton = (Button) findViewById(R.id.pausePlayButton);
+        pausePlayButton.setText(s);
     }
 }

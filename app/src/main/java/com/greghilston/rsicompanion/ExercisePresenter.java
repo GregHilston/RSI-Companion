@@ -38,7 +38,7 @@ public class ExercisePresenter {
      * Commands ExerciseModel to timer start or stop status
      */
     public void toggleStartStopTimer() {
-        exerciseModel.toggleStartStopTimer();
+
     }
 
     /**

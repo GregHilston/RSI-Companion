@@ -9,6 +9,7 @@ public class ExerciseModel {
     private Vector<Exercise> exercises;
     private int currentStretchIndex = 0;
     private int timeLeftSeconds = 0;
+    private boolean timerIsStarted = false;
 
     public ExerciseModel() {
         exercises = new Vector<>();
@@ -24,6 +25,10 @@ public class ExerciseModel {
      */
     public Exercise getCurrentExercise() {
         return this.exercises.get(currentStretchIndex);
+    }
+
+    public int getTimeLeftSeconds() {
+        return timeLeftSeconds;
     }
 
     /**
@@ -53,13 +58,6 @@ public class ExerciseModel {
     }
 
     /**
-     * Toggles the current start or stop state of the timer
-     */
-    public void toggleStartStopTimer() {
-
-    }
-
-    /**
      * Increment timer by defined amount
      */
     public void incrementTimer() {
@@ -72,6 +70,6 @@ public class ExerciseModel {
      * Restarts timer to defined exercise's default amount
      */
     public void restartTimer() {
-        this.timeLeftSeconds = getCurrentExercise().duration;
+        this.timeLeftSeconds = getCurrentExercise().getDurationSeconds();
     }
 }
