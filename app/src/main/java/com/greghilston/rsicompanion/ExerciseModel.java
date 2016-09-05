@@ -110,7 +110,9 @@ public class ExerciseModel {
     }
 
     private void cancelTimer() {
-        this.countDownTimer.cancel();
+        if (this.countDownTimer != null) { // Case when switching exercises before starting timer
+            this.countDownTimer.cancel();
+        }
         this.timerIsStarted = false;
         this.timeRemainingMilliseconds = this.getCurrentExercise().getDurationMilliseconds();
     }
