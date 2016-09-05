@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements ExerciseView {
     @Override
     public void updateStretch(Exercise s) {
         // Update the exercise name
-        TextView exerciseNameTextView = (TextView) findViewById(R.id.stretchNameTextview);
+        TextView exerciseNameTextView = (TextView) findViewById(R.id.stretchNameTextView);
         exerciseNameTextView.setText(s.getName());
 
         // Update the exercise gif

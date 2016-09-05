@@ -8,7 +8,7 @@
 
     <!-- Going To Be In Header -->
     <TextView
-        android:id="@+id/stretchNameTextview"
+        android:id="@+id/stretchNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="" />
@@ -21,14 +21,14 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/previousExerciseTextview"
+            android:id="@+id/previousExerciseTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="clickPreviousExercise"
             android:text="Previous" />
 
         <Button
-            android:id="@+id/nextExerciseTextview"
+            android:id="@+id/nextExerciseTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="clickNextExercise"
@@ -82,9 +82,9 @@
 
     </LinearLayout>
 
-    <!-- Fouth Row (Exercise Gif) -->
+    <!-- Fourth Row (Exercise Gif) -->
     <LinearLayout
-        android:id="@+id/fouthRow"
+        android:id="@+id/fourthRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

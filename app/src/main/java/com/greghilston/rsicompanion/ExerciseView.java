@@ -1,5 +1,8 @@
 package com.greghilston.rsicompanion;
 
+/**
+ * Provides a set of callbacks that a presenter can call to affect the visual display
+ */
 public interface ExerciseView {
     /**
      * Sets the timer display

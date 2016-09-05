@@ -12,8 +12,6 @@ public class ExercisePresenter {
     private ExerciseModel exerciseModel;
 
     /**
-     * Constructor
-     *
      * @param v reference to the ExerciseView, used for callbacks
      */
     public ExercisePresenter(ExerciseView v) {
@@ -37,7 +35,7 @@ public class ExercisePresenter {
      */
     public void previousExercise() {
         exerciseView.updateStretch(exerciseModel.previousExercise());
-
+        this.setTimerText(exerciseModel.getCurrentExercise().getDurationMilliseconds());
     }
 
     /**
@@ -47,6 +45,11 @@ public class ExercisePresenter {
         exerciseModel.toggleStartStopTimer();
     }
 
+    /**
+     * Sets the timer text
+     *
+     * @param timeMilliseconds time to format and set the timer text to
+     */
     public void setTimerText(long timeMilliseconds) {
         String timeFormattedString;
         long minutes = TimeUnit.MILLISECONDS.toMinutes(timeMilliseconds);
@@ -57,6 +60,10 @@ public class ExercisePresenter {
         this.exerciseView.setTimerText(timeFormattedString);
     }
 
+    /**
+     * Updates the pause play button text
+     * @param newText text to set the pause play button to
+     */
     public void updatePausePlayButton(String newText) {
         this.exerciseView.updatePausePlayButtonText(newText);
     }

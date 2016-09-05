@@ -10,7 +10,6 @@ import java.util.Vector;
 public class ExerciseModel {
     private static final long oneSecondInMilliseconds = 1000;
     private static final long fiveSecondsInMilliseconds = 5000;
-    private static final long tenSecondsInMilliseconds = 10000;
     private ExercisePresenter exercisePresenter;
     private Vector<Exercise> exercises;
     private int currentStretchIndex = 0;
@@ -18,6 +17,9 @@ public class ExerciseModel {
     private long timeRemainingMilliseconds = 0;
     private CountDownTimer countDownTimer;
 
+    /**
+     * @param exercisePresenter reference to presenter
+     */
     public ExerciseModel(ExercisePresenter exercisePresenter) {
         this.exercisePresenter = exercisePresenter;
         exercises = new Vector<>();
@@ -28,41 +30,39 @@ public class ExerciseModel {
     }
 
     /**
-     * Gets current exercise
-     *
-     * @return current exercise
+     * Selects a new exercise relative to the current
+     * @param i spaces to move
+     * @return new current exercise
      */
-    public Exercise getCurrentExercise() {
-        return this.exercises.get(currentStretchIndex);
-    }
-
-
-    /**
-     * Increments the current exercise by one, wrapping back if needed
-     */
-    public Exercise nextExercise() {
-        this.currentStretchIndex++;
+    private Exercise relativeSelectNewCurrentExercise(int i) {
+        this.currentStretchIndex += i; // Handles both positive and negative i
 
         if (this.currentStretchIndex >= this.exercises.size()) { // Wrap back
             this.currentStretchIndex = 0;
-        }
-
-        this.cancelTimer();
-        return getCurrentExercise();
-    }
-
-    /**
-     * Increments the current exercise by one, wrapping forward if needed
-     */
-    public Exercise previousExercise() {
-        this.currentStretchIndex--;
-
-        if (this.currentStretchIndex < 0) { // Wrap forward
+        } else if (this.currentStretchIndex < 0) { // Wrap forward
             this.currentStretchIndex = this.exercises.size() - 1;
         }
 
         this.cancelTimer();
         return getCurrentExercise();
+    }
+
+    /**
+     * Increments the current exercise by one, wrapping back if needed
+     * @return new current exercise
+     */
+    public Exercise nextExercise() {
+        final int nextExerciseIndex = 1;
+        return relativeSelectNewCurrentExercise(nextExerciseIndex);
+    }
+
+    /**
+     * Increments the current exercise by one, wrapping forward if needed
+     * @return new current exercise
+     */
+    public Exercise previousExercise() {
+        final int previousExerciseIndex = -1;
+        return relativeSelectNewCurrentExercise(previousExerciseIndex);
     }
 
     /**
@@ -89,9 +89,9 @@ public class ExerciseModel {
      */
     public void incrementTimer() {
         if (this.timerIsStarted) {
-            long currentTimeRemaining = this.timeRemainingMilliseconds; // Used as a temp, as others edit this.timeRemainingMilliseconds
+            long currentTimeRemainingMilliseconds = this.timeRemainingMilliseconds; // Used as a temp, as others edit this.timeRemainingMilliseconds
             this.cancelTimer();
-            this.timeRemainingMilliseconds = currentTimeRemaining + ExerciseModel.fiveSecondsInMilliseconds;
+            this.timeRemainingMilliseconds = currentTimeRemainingMilliseconds + ExerciseModel.fiveSecondsInMilliseconds;
             createAndStartTimer();
         } else {
             this.timeRemainingMilliseconds += ExerciseModel.fiveSecondsInMilliseconds;
@@ -109,6 +109,9 @@ public class ExerciseModel {
         this.exercisePresenter.setTimerText(this.timeRemainingMilliseconds);
     }
 
+    /**
+     * Cancels the timer if it exists, saving what time was left
+     */
     private void cancelTimer() {
         if (this.countDownTimer != null) { // Case when switching exercises before starting timer
             this.countDownTimer.cancel();
@@ -132,6 +135,16 @@ public class ExerciseModel {
         }
     }
 
+    /**
+     * @return current exercise
+     */
+    public Exercise getCurrentExercise() {
+        return this.exercises.get(currentStretchIndex);
+    }
+
+    /**
+     * @return time remaining in milli seconds
+     */
     public long getTimeRemainingMilliseconds() {
         return timeRemainingMilliseconds;
     }
