@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -11,14 +11,13 @@
         android:id="@+id/stretchNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:text="Exercise Name" />
 
-    <!-- First Row (Exercise Controls) -->
     <LinearLayout
-        android:id="@+id/firstRow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    android:id="@+id/firstRow"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/previousExerciseTextView"
@@ -27,72 +26,67 @@
             android:onClick="clickPreviousExercise"
             android:src="@drawable/left" />
 
+        <LinearLayout
+            android:id="@+id/innerColumnLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/timerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Timer" />
+
+            <LinearLayout
+                android:id="@+id/innerRowLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/addTimeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="clickIncrementTimer"
+                    android:src="@drawable/plus" />
+
+                <ImageButton
+                    android:id="@+id/pausePlayButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="clickToggleStartStopTimer"
+                    android:src="@drawable/play" />
+
+                <ImageButton
+                    android:id="@+id/restartButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="clickRestartTimer"
+                    android:src="@drawable/restart" />
+            </LinearLayout>
+        </LinearLayout>
+
         <ImageButton
             android:id="@+id/nextExerciseTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="clickNextExercise"
+            android:onClick="clickPreviousExercise"
             android:src="@drawable/right" />
-
     </LinearLayout>
 
-    <!-- Second Row (ExerciseTimer Controls) -->
+    <!-- Second Row (Exercise Gif) -->
     <LinearLayout
         android:id="@+id/secondRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/addTimeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="clickIncrementTimer"
-            android:src="@drawable/plus" />
-
-        <ImageButton
-            android:id="@+id/pausePlayButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="clickToggleStartStopTimer"
-            android:src="@drawable/play" />
-
-        <ImageButton
-            android:id="@+id/restartButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="clickRestartTimer"
-            android:src="@drawable/restart" />
-    </LinearLayout>
-
-    <!-- Third Row (ExerciseTimer) -->
-    <LinearLayout
-        android:id="@+id/thirdRow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/timerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
-
-    </LinearLayout>
-
-    <!-- Fourth Row (Exercise Gif) -->
-    <LinearLayout
-        android:id="@+id/fourthRow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:orientation="horizontal">
 
         <pl.droidsonroids.gif.GifTextView
             android:id="@+id/currentExerciseGif"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/dog"/>
     </LinearLayout>
 </LinearLayout>
