@@ -54,8 +54,14 @@ public class ExercisePresenter {
         String timeFormattedString;
         long minutes = TimeUnit.MILLISECONDS.toMinutes(timeMilliseconds);
         long seconds = TimeUnit.MILLISECONDS.toSeconds(timeMilliseconds) % secondsInAMinute;
+        String secondsRepresentation = String.valueOf(seconds);
 
-        timeFormattedString = minutes + ":" + seconds;
+        // Appending a zero in front so a timer with a minute and 5 seconds looks like 1:05
+        if(seconds <= 9) {
+            secondsRepresentation = "0" + secondsRepresentation;
+        }
+
+        timeFormattedString = minutes + ":" + secondsRepresentation;
 
         this.exerciseView.setTimerText(timeFormattedString);
     }
