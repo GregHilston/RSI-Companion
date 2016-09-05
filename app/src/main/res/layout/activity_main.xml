@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:background="@color/purple" >
+    android:background="@color/primary_color">
 
     <!-- Going To Be In Header -->
     <TextView
@@ -13,96 +10,79 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Exercise Name"
-        android:textColor="@color/white"
+        android:textColor="@color/text_icons_color"
         android:textStyle="bold" />
 
-    <!-- First Row (Controls + Timer) -->
-    <LinearLayout
-    android:id="@+id/firstRow"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    <pl.droidsonroids.gif.GifTextView
+        android:id="@+id/currentExerciseGif"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/dog"
+        android:layout_alignParentBottom="true" />
 
-        <ImageButton
-            android:id="@+id/previousExerciseTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="clickPreviousExercise"
-            android:src="@drawable/left"
-            android:background="@color/amber" />
+    <ImageButton
+        android:id="@+id/previousExerciseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clickPreviousExercise"
+        android:src="@drawable/left"
+        android:background="@color/accent_color"
+        android:layout_alignBottom="@+id/timerTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-        <LinearLayout
-            android:id="@+id/innerColumnLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timer"
+        android:textSize="@dimen/timer_font_size"
+        android:textColor="@color/text_icons_color"
+        android:textStyle="bold"
+        android:layout_above="@+id/pausePlayButton"
+        android:layout_centerHorizontal="true"/>
 
-            <TextView
-                android:id="@+id/timerTextView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Timer"
-                android:textSize="@dimen/timer_font_size"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
+    <ImageButton
+        android:id="@+id/nextExerciseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clickPreviousExercise"
+        android:src="@drawable/right"
+        android:background="@color/accent_color"
+        android:layout_alignBottom="@+id/timerTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
-            <LinearLayout
-                android:id="@+id/innerRowLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+    <ImageButton
+        android:id="@+id/addTimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clickIncrementTimer"
+        android:src="@drawable/plus"
+        android:background="@color/accent_color"
+        android:layout_above="@id/currentExerciseGif"
+        android:layout_toLeftOf="@+id/pausePlayButton" />
 
-                <ImageButton
-                    android:id="@+id/addTimeButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="clickIncrementTimer"
-                    android:src="@drawable/plus"
-                    android:background="@color/amber"/>
+    <ImageButton
+        android:id="@+id/pausePlayButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clickToggleStartStopTimer"
+        android:src="@drawable/play"
+        android:background="@color/accent_color"
+        android:layout_above="@id/currentExerciseGif"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="70dip"/>
 
-                <ImageButton
-                    android:id="@+id/pausePlayButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="clickToggleStartStopTimer"
-                    android:src="@drawable/play"
-                    android:background="@color/amber"/>
-
-                <ImageButton
-                    android:id="@+id/restartButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="clickRestartTimer"
-                    android:src="@drawable/restart"
-                    android:background="@color/amber"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/nextExerciseTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="clickPreviousExercise"
-            android:src="@drawable/right"
-            android:background="@color/amber" />
-    </LinearLayout>
-
-    <!-- Second Row (Exercise Gif) -->
-    <LinearLayout
-        android:id="@+id/secondRow"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:background="@color/black"
-        android:gravity="center|bottom"
-        android:layout_weight="1">
-
-        <pl.droidsonroids.gif.GifTextView
-            android:id="@+id/currentExerciseGif"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dog"
-            android:layout_weight="0" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/restartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clickRestartTimer"
+        android:src="@drawable/restart"
+        android:background="@color/accent_color"
+        android:layout_above="@id/currentExerciseGif"
+        android:layout_toRightOf="@+id/pausePlayButton" />
+</RelativeLayout>

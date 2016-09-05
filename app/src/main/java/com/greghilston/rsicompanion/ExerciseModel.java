@@ -133,6 +133,7 @@ public class ExerciseModel {
     public void toggleStartStopTimer() {
         if (this.timerIsStarted) {
             cancelTimer();
+            this.exercisePresenter.updatePausePlayButton(R.drawable.play);
         } else {
             createAndStartTimer();
             this.countDownTimer.start();

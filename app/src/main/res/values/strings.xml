@@ -63,12 +63,12 @@
     <dimen name="timer_font_size">60sp</dimen>
 
     <!-- Custom colors used (from https://www.materialpalette.com/deep-purple/amber) -->
-    <color name="deep_purple">#512DA8</color> <!-- Dark Primary Color -->
-    <color name="purple">#673AB7</color> <!-- Primary Color -->
-    <color name="light_purple">#D1C4E9</color> <!-- Light Primary Color -->
-    <color name="white">#FFFFFF</color> <!-- Text / Icons -->
-    <color name="amber">#FFC107</color> <!-- Accent Color -->
-    <color name="black">#212121</color> <!-- Primary Text -->
-    <color name="light_black">#757575</color> <!-- Secondary Text -->
-    <color name="lighter_black">#BDBDBD</color> <!-- Divider Text -->
+    <color name="dark_primary_color">#512DA8</color>
+    <color name="primary_color">#673AB7</color>
+    <color name="light_primary_color">#D1C4E9</color>
+    <color name="text_icons_color">#FFFFFF</color>
+    <color name="accent_color">#E040FB</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="divider_text">#BDBDBD</color>
 </resources>
