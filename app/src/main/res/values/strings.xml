@@ -60,6 +60,8 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
 
+    <dimen name="timer_font_size">60sp</dimen>
+
     <!-- Custom colors used (from https://www.materialpalette.com/deep-purple/amber) -->
     <color name="deep_purple">#512DA8</color> <!-- Dark Primary Color -->
     <color name="purple">#673AB7</color> <!-- Primary Color -->
@@ -67,6 +69,6 @@
     <color name="white">#FFFFFF</color> <!-- Text / Icons -->
     <color name="amber">#FFC107</color> <!-- Accent Color -->
     <color name="black">#212121</color> <!-- Primary Text -->
-    <color name="light_black">##57575</color> <!-- Secondary Text -->
+    <color name="light_black">#757575</color> <!-- Secondary Text -->
     <color name="lighter_black">#BDBDBD</color> <!-- Divider Text -->
 </resources>

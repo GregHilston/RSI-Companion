@@ -43,6 +43,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Timer"
+                android:textSize="@dimen/timer_font_size"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
