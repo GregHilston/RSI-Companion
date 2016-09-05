@@ -4,67 +4,77 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/purple" >
 
     <!-- Going To Be In Header -->
     <TextView
         android:id="@+id/stretchNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Exercise Name" />
+        android:text="Exercise Name"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
+    <!-- First Row (Controls + Timer) -->
     <LinearLayout
     android:id="@+id/firstRow"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal" >
 
         <ImageButton
             android:id="@+id/previousExerciseTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="clickPreviousExercise"
-            android:src="@drawable/left" />
+            android:src="@drawable/left"
+            android:background="@color/amber" />
 
         <LinearLayout
             android:id="@+id/innerColumnLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/timerTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Timer" />
+                android:text="Timer"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/innerRowLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal" >
 
                 <ImageButton
                     android:id="@+id/addTimeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="clickIncrementTimer"
-                    android:src="@drawable/plus" />
+                    android:src="@drawable/plus"
+                    android:background="@color/amber"/>
 
                 <ImageButton
                     android:id="@+id/pausePlayButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="clickToggleStartStopTimer"
-                    android:src="@drawable/play" />
+                    android:src="@drawable/play"
+                    android:background="@color/amber"/>
 
                 <ImageButton
                     android:id="@+id/restartButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="clickRestartTimer"
-                    android:src="@drawable/restart" />
+                    android:src="@drawable/restart"
+                    android:background="@color/amber"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -73,7 +83,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="clickPreviousExercise"
-            android:src="@drawable/right" />
+            android:src="@drawable/right"
+            android:background="@color/amber" />
     </LinearLayout>
 
     <!-- Second Row (Exercise Gif) -->
@@ -81,7 +92,8 @@
         android:id="@+id/secondRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/black">
 
         <pl.droidsonroids.gif.GifTextView
             android:id="@+id/currentExerciseGif"
