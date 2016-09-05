@@ -62,10 +62,10 @@ public class ExercisePresenter {
 
     /**
      * Updates the pause play button text
-     * @param newText text to set the pause play button to
+     * @param drawableId drawable id of the image to display
      */
-    public void updatePausePlayButton(String newText) {
-        this.exerciseView.updatePausePlayButtonText(newText);
+    public void updatePausePlayButton(int drawableId) {
+        this.exerciseView.updatePausePlayButtonImage(drawableId);
     }
 
     /**

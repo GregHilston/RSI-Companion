@@ -126,12 +126,12 @@ public class ExerciseModel {
     public void toggleStartStopTimer() {
         if (this.timerIsStarted) {
             cancelTimer();
-            this.exercisePresenter.updatePausePlayButton("Play");
+            this.exercisePresenter.updatePausePlayButton(R.drawable.play);
         } else {
             createAndStartTimer();
             this.countDownTimer.start();
             this.timerIsStarted = true;
-            this.exercisePresenter.updatePausePlayButton("Pause");
+            this.exercisePresenter.updatePausePlayButton(R.drawable.pause);
         }
     }
 

@@ -20,19 +20,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/previousExerciseTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="clickPreviousExercise"
-            android:text="Previous" />
+            android:src="@drawable/left" />
 
-        <Button
+        <ImageButton
             android:id="@+id/nextExerciseTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="clickNextExercise"
-            android:text="Next" />
+            android:src="@drawable/right" />
 
     </LinearLayout>
 
@@ -44,26 +44,26 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/addTimeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="clickIncrementTimer"
-            android:text="+" />
+            android:src="@drawable/plus" />
 
-        <Button
+        <ImageButton
             android:id="@+id/pausePlayButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="clickToggleStartStopTimer"
-            android:text="Play" />
+            android:src="@drawable/play" />
 
-        <Button
+        <ImageButton
             android:id="@+id/restartButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="clickRestartTimer"
-            android:text="Restart" />
+            android:src="@drawable/restart" />
     </LinearLayout>
 
     <!-- Third Row (ExerciseTimer) -->

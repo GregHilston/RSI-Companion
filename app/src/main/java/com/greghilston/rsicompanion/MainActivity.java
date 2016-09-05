@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
@@ -85,9 +85,9 @@ public class MainActivity extends AppCompatActivity implements ExerciseView {
     }
 
     @Override
-    public void updatePausePlayButtonText(String newText) {
+    public void updatePausePlayButtonImage(int drawableId) {
         // Update the pause play button
-        Button pausePlayButton = (Button) findViewById(R.id.pausePlayButton);
-        pausePlayButton.setText(newText);
+        ImageButton pausePlayButton = (ImageButton) findViewById(R.id.pausePlayButton);
+        pausePlayButton.setImageResource(drawableId);
     }
 }

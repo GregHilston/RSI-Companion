@@ -19,9 +19,9 @@ public interface ExerciseView {
     void updateStretch(Exercise s);
 
     /**
-     * Updates the pause play button text
+     * Updates the pause play button image
      *
-     * @param newText string to set button text to
+     * @param drawableId drawable id of the image to display
      */
-    void updatePausePlayButtonText(String newText);
+    void updatePausePlayButtonImage(int drawableId);
 }
