@@ -23,8 +23,8 @@ public class ExerciseModel {
     public ExerciseModel(ExercisePresenter exercisePresenter) {
         this.exercisePresenter = exercisePresenter;
         exercises = new Vector<>();
-        exercises.add(new Exercise("Cat", R.drawable.cat, 10000));
         exercises.add(new Exercise("Dog", R.drawable.dog, 20000));
+        exercises.add(new Exercise("Cat", R.drawable.cat, 10000));
         currentStretchIndex = 0;
         timeRemainingMilliseconds = this.getCurrentExercise().getDurationMilliseconds();
     }
@@ -112,6 +112,7 @@ public class ExerciseModel {
     public void restartTimer() {
         this.timeRemainingMilliseconds = this.getCurrentExercise().getDurationMilliseconds();
         this.cancelTimer();
+        this.exercisePresenter.updatePausePlayButton(R.drawable.play);
         this.exercisePresenter.setTimerText(this.timeRemainingMilliseconds);
     }
 
@@ -132,7 +133,6 @@ public class ExerciseModel {
     public void toggleStartStopTimer() {
         if (this.timerIsStarted) {
             cancelTimer();
-            this.exercisePresenter.updatePausePlayButton(R.drawable.play);
         } else {
             createAndStartTimer();
             this.countDownTimer.start();
