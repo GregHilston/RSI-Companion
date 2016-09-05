@@ -7,11 +7,22 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.AbstractBadgeableDrawerItem;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+
+import java.util.Vector;
+
 /**
  * Creates the MVP (Model View Presentation) structure and also holds the View component.
  */
 public class MainActivity extends AppCompatActivity implements ExerciseView {
     private ExercisePresenter exercisePresenter;
+    private Drawer drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +31,33 @@ public class MainActivity extends AppCompatActivity implements ExerciseView {
         setContentView(R.layout.activity_main);
 
         exercisePresenter = new ExercisePresenter(this);
+        this.drawer = createDrawer();
+    }
+
+    /**
+     * Creates the material drawer
+     * @return create drawer
+     */
+    private Drawer createDrawer() {
+        //if you want to update the items at a later time it is recommended to keep it in a variable
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Home");
+        SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Settings");
+        Vector<AbstractBadgeableDrawerItem> drawerItems =  new Vector<>();
+        drawerItems.add(item1);
+        drawerItems.add(item2);
+
+        //create the drawer and remember the `Drawer` result object
+        Drawer drawer = new DrawerBuilder()
+                .withActivity(this)
+                .withTranslucentStatusBar(false)
+                .withActionBarDrawerToggle(false)
+                .build();
+
+        for(AbstractBadgeableDrawerItem item : drawerItems) {
+            drawer.addItem(item);
+        }
+
+        return drawer;
     }
 
     /**
