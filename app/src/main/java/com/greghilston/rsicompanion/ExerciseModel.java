@@ -53,6 +53,9 @@ public class ExerciseModel {
      */
     public Exercise nextExercise() {
         final int nextExerciseIndex = 1;
+
+        this.exercisePresenter.updatePausePlayButton(R.drawable.play);
+
         return relativeSelectNewCurrentExercise(nextExerciseIndex);
     }
 
@@ -62,6 +65,9 @@ public class ExerciseModel {
      */
     public Exercise previousExercise() {
         final int previousExerciseIndex = -1;
+
+        this.exercisePresenter.updatePausePlayButton(R.drawable.play);
+
         return relativeSelectNewCurrentExercise(previousExerciseIndex);
     }
 
