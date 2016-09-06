@@ -1,6 +1,7 @@
 package com.greghilston.rsicompanion;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -39,12 +40,7 @@ public class MainActivity extends AppCompatActivity implements ExerciseView {
      * @return create drawer
      */
     private Drawer createDrawer() {
-        //if you want to update the items at a later time it is recommended to keep it in a variable
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Home");
-        SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Settings");
         Vector<AbstractBadgeableDrawerItem> drawerItems =  new Vector<>();
-        drawerItems.add(item1);
-        drawerItems.add(item2);
 
         // create the drawer and remember the `Drawer` result object
         Drawer drawer = new DrawerBuilder()
@@ -54,6 +50,15 @@ public class MainActivity extends AppCompatActivity implements ExerciseView {
                 .build();
 
         this.exercisePresenter.addActivitiesToDrawer(drawer);
+
+        drawer.setOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+            @Override
+            public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                MainActivity.this.exercisePresenter.ithDrawerExercise(position);
+                MainActivity.this.drawer.closeDrawer();
+                return true;
+            }
+        });
 
         return drawer;
     }

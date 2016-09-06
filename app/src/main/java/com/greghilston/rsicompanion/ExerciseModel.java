@@ -51,6 +51,18 @@ public class ExerciseModel {
     }
 
     /**
+     * Selects a new exercise, regardless to current
+     * @param i index
+     * @return new current exercise
+     */
+    private Exercise absoluteSelectNewCurrentExercise(int i) {
+        this.currentStretchIndex = i;
+
+        this.cancelTimer();
+        return getCurrentExercise();
+    }
+
+    /**
      * Increments the current exercise by one, wrapping back if needed
      * @return new current exercise
      */
@@ -72,6 +84,17 @@ public class ExerciseModel {
         this.exercisePresenter.updatePausePlayButton(R.drawable.play);
 
         return relativeSelectNewCurrentExercise(previousExerciseIndex);
+    }
+
+    /**
+     * Display ith exercise clicked on through the drawer interface
+     * @param absoluteExerciseIndex ith parameter in drawer clicked
+     */
+    public Exercise ithDrawerExercise(int absoluteExerciseIndex) {
+        currentStretchIndex = absoluteExerciseIndex;
+        this.exercisePresenter.updatePausePlayButton(R.drawable.play);
+
+        return absoluteSelectNewCurrentExercise(absoluteExerciseIndex);
     }
 
     /**

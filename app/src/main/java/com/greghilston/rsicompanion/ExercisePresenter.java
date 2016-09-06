@@ -36,7 +36,16 @@ public class ExercisePresenter {
      * Calls back to ExerciseView to update graphically to previous exercise
      */
     public void previousExercise() {
-        exerciseView.updateStretch(exerciseModel.previousExercise());
+        this.exerciseView.updateStretch(exerciseModel.previousExercise());
+        this.setTimerText(exerciseModel.getCurrentExercise().getDurationMilliseconds());
+    }
+
+    /**
+     * Display ith exercise clicked on through the drawer interface
+     * @param absoluteExerciseIndex ith parameter in drawer clicked
+     */
+    public void ithDrawerExercise(int absoluteExerciseIndex) {
+        this.exerciseView.updateStretch(exerciseModel.ithDrawerExercise(absoluteExerciseIndex));
         this.setTimerText(exerciseModel.getCurrentExercise().getDurationMilliseconds());
     }
 
