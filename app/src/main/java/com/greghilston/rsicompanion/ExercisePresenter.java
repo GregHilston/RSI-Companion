@@ -1,5 +1,7 @@
 package com.greghilston.rsicompanion;
 
+import com.mikepenz.materialdrawer.Drawer;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -86,5 +88,12 @@ public class ExercisePresenter {
      */
     public void restartTimer() {
         exerciseModel.restartTimer();
+    }
+
+    /**
+     * Adds all activities to the drawer
+     */
+    public void addActivitiesToDrawer(Drawer drawer) {
+        this.exerciseModel.addActivitiesToDrawer(drawer);
     }
 }

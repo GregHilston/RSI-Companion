@@ -2,6 +2,9 @@ package com.greghilston.rsicompanion;
 
 import android.os.CountDownTimer;
 
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+
 import java.util.Vector;
 
 /**
@@ -139,6 +142,12 @@ public class ExerciseModel {
             this.countDownTimer.start();
             this.timerIsStarted = true;
             this.exercisePresenter.updatePausePlayButton(R.drawable.pause);
+        }
+    }
+
+    public void addActivitiesToDrawer(Drawer drawer) {
+        for(Exercise e : exercises) {
+            drawer.addItem(new SecondaryDrawerItem().withIdentifier(2).withName(e.getName()));
         }
     }
 

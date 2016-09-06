@@ -46,16 +46,14 @@ public class MainActivity extends AppCompatActivity implements ExerciseView {
         drawerItems.add(item1);
         drawerItems.add(item2);
 
-        //create the drawer and remember the `Drawer` result object
+        // create the drawer and remember the `Drawer` result object
         Drawer drawer = new DrawerBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(false)
                 .withActionBarDrawerToggle(false)
                 .build();
 
-        for(AbstractBadgeableDrawerItem item : drawerItems) {
-            drawer.addItem(item);
-        }
+        this.exercisePresenter.addActivitiesToDrawer(drawer);
 
         return drawer;
     }
