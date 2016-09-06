@@ -4,6 +4,16 @@
     android:layout_height="match_parent"
     android:background="@color/primary_color">
 
+    <!-- The ActionBar displayed at the top -->
+    <ImageButton
+        android:id="@+id/drawerButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@color/primary_color"
+        android:src="@drawable/ic_drawer"
+        android:layout_marginRight="15dip"
+        android:onClick="clickDrawerMenu" />
+
     <!-- Going To Be In Header -->
     <TextView
         android:id="@+id/stretchNameTextView"
@@ -11,7 +21,8 @@
         android:layout_height="wrap_content"
         android:text="Exercise Name"
         android:textColor="@color/text_icons_color"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/drawerButton" />
 
     <pl.droidsonroids.gif.GifTextView
         android:id="@+id/currentExerciseGif"

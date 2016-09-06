@@ -106,6 +106,14 @@ public class MainActivity extends AppCompatActivity implements ExerciseView {
         exercisePresenter.restartTimer();
     }
 
+    /**
+     * Opens navigation drawer menu
+     * @param view current view
+     */
+    public void clickDrawerMenu(View view) {
+        this.drawer.openDrawer();
+    }
+
     @Override
     public void setTimerText(String timeFormattedString) {
         // Update the timer TextView
