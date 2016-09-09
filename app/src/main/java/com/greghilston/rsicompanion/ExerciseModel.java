@@ -143,6 +143,17 @@ public class ExerciseModel {
     }
 
     /**
+     * Pauses the timer if it exists, saving what time was left
+     */
+    private void pauseTimer() {
+        if (this.countDownTimer != null) { // Case when switching exercises before starting timer
+            this.countDownTimer.cancel();
+        }
+        this.timerIsStarted = false;
+    }
+
+
+    /**
      * Cancels the timer if it exists, saving what time was left
      */
     private void cancelTimer() {
@@ -158,7 +169,7 @@ public class ExerciseModel {
      */
     public void toggleStartStopTimer() {
         if (this.timerIsStarted) {
-            cancelTimer();
+            pauseTimer();
             this.exercisePresenter.updatePausePlayButton(R.drawable.play);
         } else {
             createAndStartTimer();
